@@ -43,6 +43,9 @@ Route::group(['middleware' => ['web']], function () {
         /** Routes for user operation*/
         Route::get('/user/summary', 'UserController@get');
         /** User operation ends here */
+        /**Packt Routes for getting product details**/
+        Route::get('/packt/get-product', 'PacktController@productList');
+        /**Pack operation ends here**/
     });
 });
 //Route bringing the application back to dashboard

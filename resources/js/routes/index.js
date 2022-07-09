@@ -7,7 +7,8 @@ import ProductCreate from '../components/Product/CreateComponent.vue';
 import ProductEdit from '../components/Product/UpdateComponent.vue';
 import ProductRestore from '../components/Product/RestoreComponent.vue';
 import UserIndex from '../components/User/IndexComponent.vue';
-
+import PackDetail from '../components/Packt/IndexComponent.vue';
+import PackProductDetail from '../components/Packt/ViewComponent.vue';
 import TestIndex from '../components/TestComponent.vue';
 Vue.use(VueRouter);
 const routes = [
@@ -19,6 +20,8 @@ const routes = [
     { path: '/product/edit/:id', component: ProductEdit, name: 'product.edit' },
     { path: '/product/restore', component: ProductRestore, name: 'product.restore' },
     { path: '/user/summary', component: UserIndex, name: 'user.summary' },
+    { path: '/pack/products', component: PackDetail, name: 'packt.detail' },
+    { path: '/pack/products/single/:id', component: PackProductDetail, name: 'packt.detail.single' },
 
     //only for testing purpose use this component
 

@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use App\ORM_Model\Fld_Product\Product;
 use Illuminate\Database\Seeder;
 
@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class, 100)->create()->each(function ($user) {
+        Product::factory()->count(100)->create()->each(function ($user) {
             $user->save();
         });
     }

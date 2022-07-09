@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Channel\FirebaseChannel;
 use App\ORM_Model\Fld_Event\EventInterface;
 use App\ORM_Model\Fld_Event\EventRepository;
+use App\ORM_Model\Fld_Packt\PackRepository;
+use App\ORM_Model\Fld_Packt\PacktInterface;
 use App\ORM_Model\Fld_Product\ProductInterface;
 use App\ORM_Model\Fld_Product\ProductRepository;
 use App\ORM_Model\Fld_User\UserInterface;
@@ -36,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
             EventInterface::class,
             EventRepository::class
         );
+        $this->app->bind(
+            PacktInterface::class,
+            PackRepository::class
+        );
         Notification::extend('firebase', function () {
             return new FirebaseChannel();
         });
@@ -53,12 +59,12 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('mobile', function ($attribute, $value) {
             return preg_match('%^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$%i', $value) && strlen($value) == 10;
         });
-        if (env('APP_ENV') === 'local') {
-        } else {
-            URL::forceScheme('https');
-            if ($request->server->has('HTTP_X_ORIGINAL_HOST')) {
-                $this->app['url']->forceRootUrl($request->server->get('HTTP_X_FORWARDED_PROTO') . '://' . $request->server->get('HTTP_X_ORIGINAL_HOST'));
-            }
-        }
+        // if (env('APP_ENV') === 'local') {
+        // } else {
+        //     URL::forceScheme('https');
+        //     if ($request->server->has('HTTP_X_ORIGINAL_HOST')) {
+        //         $this->app['url']->forceRootUrl($request->server->get('HTTP_X_FORWARDED_PROTO') . '://' . $request->server->get('HTTP_X_ORIGINAL_HOST'));
+        //     }
+        // }
     }
 }

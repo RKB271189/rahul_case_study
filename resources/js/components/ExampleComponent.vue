@@ -11,7 +11,7 @@ export default {
     },
   },
   created(){
-    this.$router.push({ name: "dashboard.detail" }).catch(() => {});
+    this.$router.push({ name: "packt.detail" }).catch(() => {});
   }
 };
 </script>
