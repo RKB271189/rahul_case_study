@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +13,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         //Generate Fake Data
-        factory(User::class, 1)->create()->each(function ($user) {
+        User::factory()->count(1)->create()->each(function ($user) {
             $user->save();
         });
-    }    
+    }
 }

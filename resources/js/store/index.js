@@ -4,13 +4,15 @@ import Vuex from 'vuex';
 import ProductIndex from './modules/fld_product/index';
 import UserIndex from './modules/fld_user/index';
 import TestIndex from './modules/fld_test/index';
+import PacktIndex from './modules/fld_packt/index';
 Vue.use(Vuex);
 export default new Vuex.Store({
     modules: {
         //LandingSingle
         ProductIndex,
         UserIndex,
-        TestIndex
+        TestIndex,
+        PacktIndex
     },
     strict: true
 });
