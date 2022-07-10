@@ -463,6 +463,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -474,7 +491,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
-    this.fetchproduct();
+    this.fetchproduct().then(function (result) {})["catch"](function (error) {});
   },
   destroyed: function destroyed() {
     this.resetstate();
@@ -1629,12 +1646,12 @@ var actions = {
     return new Promise(function (resolve, reject) {
       axios.get('/packt/get-product').then(function (response) {
         commit('setproduct', response.data);
-        console.log(response.data);
-        resolve(true);
       })["catch"](function (error) {
-        reject(error.response.data);
+        console.log(error);
+        reject(false);
       })["finally"](function () {
         commit('setloading', false);
+        resolve(true);
       });
     });
   },
@@ -22314,7 +22331,154 @@ var render = function () {
                   [
                     _vm.loading ? _c("loadingoverlay-component") : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(0),
+                    _c(
+                      "div",
+                      { staticClass: "row" },
+                      _vm._l(_vm.product.products, function (details) {
+                        return _c(
+                          "div",
+                          { key: details.id, staticClass: "col-md-3" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "card card-primary card-outline" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "card-body box-profile" },
+                                  [
+                                    _vm._m(0, true),
+                                    _vm._v(" "),
+                                    _c(
+                                      "h3",
+                                      {
+                                        staticClass:
+                                          "profile-username text-center",
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(details.title) +
+                                            "\n                      "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      { staticClass: "text-muted text-center" },
+                                      [_vm._v(_vm._s(details.concept))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "ul",
+                                      {
+                                        staticClass:
+                                          "list-group list-group-unbordered mb-3",
+                                      },
+                                      [
+                                        _c(
+                                          "li",
+                                          { staticClass: "list-group-item" },
+                                          [
+                                            _c("b", [_vm._v("Author ")]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "a",
+                                              { staticClass: "float-right" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(details.authors[0])
+                                                ),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          { staticClass: "list-group-item" },
+                                          [
+                                            _c("b", [
+                                              _vm._v("Publication Date"),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "a",
+                                              { staticClass: "float-right" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    details.publication_date
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          { staticClass: "list-group-item" },
+                                          [
+                                            _c("b", [_vm._v("Tool ")]),
+                                            _vm._v(" "),
+                                            details.tool
+                                              ? _c(
+                                                  "a",
+                                                  {
+                                                    staticClass: "float-right",
+                                                  },
+                                                  [_vm._v(_vm._s(details.tool))]
+                                                )
+                                              : _c(
+                                                  "a",
+                                                  {
+                                                    staticClass: "float-right",
+                                                  },
+                                                  [_vm._v("-")]
+                                                ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          { staticClass: "list-group-item" },
+                                          [
+                                            _c("b", [_vm._v("Language ")]),
+                                            _vm._v(" "),
+                                            details.language
+                                              ? _c(
+                                                  "a",
+                                                  {
+                                                    staticClass: "float-right",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(details.language)
+                                                    ),
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "a",
+                                                  {
+                                                    staticClass: "float-right",
+                                                  },
+                                                  [_vm._v("-")]
+                                                ),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                          ]
+                        )
+                      }),
+                      0
+                    ),
                   ],
                   1
                 ),
@@ -22332,47 +22496,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body box-profile" }, [
-      _c("div", { staticClass: "text-center" }, [
-        _c("img", {
-          staticClass: "profile-user-img img-fluid img-circle",
-          attrs: { src: "", alt: "User profile picture" },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("h3", { staticClass: "profile-username text-center" }, [
-        _vm._v("Nina Mcintire"),
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-muted text-center" }, [
-        _vm._v("Software Engineer"),
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "list-group list-group-unbordered mb-3" }, [
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("b", [_vm._v("Followers")]),
-          _vm._v(" "),
-          _c("a", { staticClass: "float-right" }, [_vm._v("1,322")]),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("b", [_vm._v("Following")]),
-          _vm._v(" "),
-          _c("a", { staticClass: "float-right" }, [_vm._v("543")]),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("b", [_vm._v("Friends")]),
-          _vm._v(" "),
-          _c("a", { staticClass: "float-right" }, [_vm._v("13,287")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "btn btn-primary btn-block", attrs: { href: "#" } },
-        [_c("b", [_vm._v("Follow")])]
-      ),
+    return _c("div", { staticClass: "text-center" }, [
+      _c("img", {
+        staticClass: "profile-user-img img-fluid img-circle",
+        attrs: { src: "/images.jpeg", alt: "User profile picture" },
+      }),
     ])
   },
 ]
