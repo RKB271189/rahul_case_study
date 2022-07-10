@@ -34,6 +34,7 @@ import store from './store';
 import Datatable from 'vue2-datatable-component';
 import VueAWN from 'vue-awesome-notifications';
 import VuesweetAlert from 'vue-sweetalert2';
+import Paginate from 'vuejs-paginate'
 
 
 
@@ -43,6 +44,7 @@ Vue.use(VueAWN, {
     position: 'top-right'
 });
 Vue.use(VuesweetAlert);
+//Vue.use(Paginate);
 
 /**
  * The following block of code may be used to automatically register your
@@ -62,6 +64,7 @@ Vue.component('loadingoverlay-component', require('./components/Extra/Loadingove
 Vue.component('cardheader-component', require('./components/Extra/CardheaderComponent.vue').default);
 Vue.component('cardfooter-component', require('./components/Extra/CardfooterComponent.vue').default);
 Vue.component('inputtext-component', require('./components/Extra/InputtextComponent.vue').default);
+Vue.component('paginate', Paginate);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
