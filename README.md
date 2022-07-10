@@ -9,7 +9,7 @@ Laravel vue pack practical to start application
 
 2) create database in mysql use the credentials of mysql in .env file
 
-3) php artisan migrate (create table in database) Just for user registration and login
+3) php artisan migrate (create table in database) Just for user registration and login as web app will require to login or create registraion
 
 # Vue Js (npm) Command List : 
 
