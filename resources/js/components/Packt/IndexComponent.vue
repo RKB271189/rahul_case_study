@@ -18,10 +18,21 @@
                 <!-- <loadingtable-component v-if="loading"></loadingtable-component> -->
                 <!-- Product Summary Here -->
                 <div class="row">
+                  <paginate
+                    :pageCount="product.last_page"
+                    :click-handler="paginateCallback"
+                    :prevText="'Prev'"
+                    :nextText="'Next'"
+                    :containerClass="'pagination'"
+                    class="pagination"
+                    :value="product.current_page"
+                  ></paginate>
+                </div>
+                <div class="row">
                   <div
                     class="col-md-3"
-                    v-for="details in product.products"
-                    v-bind:key="details.id"
+                    v-for="(details,index) in product.products"
+                    v-bind:key="index"
                   >
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">
@@ -34,23 +45,35 @@
                           />
                         </div>
                         <h3 class="profile-username text-center">
-                          {{details.title}}
+                          {{ details.title }}
                         </h3>
-                        <p class="text-muted text-center">{{details.concept}}</p>
+                        <p class="text-muted text-center">
+                          {{ details.concept }}
+                        </p>
                         <ul class="list-group list-group-unbordered mb-3">
                           <li class="list-group-item">
-                            <b>Author </b> <a class="float-right">{{details.authors[0]}}</a>
+                            <b>Author </b>
+                            <a class="float-right">{{ details.authors[0] }}</a>
                           </li>
                           <li class="list-group-item">
-                            <b>Publication Date</b> <a class="float-right">{{details.publication_date}}</a>
+                            <b>Publication Date</b>
+                            <a class="float-right">{{
+                              details.publication_date
+                            }}</a>
                           </li>
                           <li class="list-group-item">
-                            <b>Tool </b> <a class="float-right" v-if="details.tool">{{details.tool}}</a>
-                                         <a class="float-right" v-else>-</a>
+                            <b>Tool </b>
+                            <a class="float-right" v-if="details.tool">{{
+                              details.tool
+                            }}</a>
+                            <a class="float-right" v-else>-</a>
                           </li>
                           <li class="list-group-item">
-                            <b>Language </b> <a class="float-right" v-if="details.language">{{details.language}}</a>
-                                             <a class="float-right" v-else>-</a>
+                            <b>Language </b>
+                            <a class="float-right" v-if="details.language">{{
+                              details.language
+                            }}</a>
+                            <a class="float-right" v-else>-</a>
                           </li>
                         </ul>
                       </div>
@@ -88,10 +111,61 @@ export default {
   computed: {
     ...mapGetters("PacktIndex", ["loading", "product"]),
   },
+  watch: {},
   methods: {
-    ...mapActions("PacktIndex", ["resetstate", "fetchproduct"]),
+    ...mapActions("PacktIndex", [
+      "resetstate",
+      "fetchproduct",
+      "fetchproductperpage",
+    ]),
+    paginateCallback(pagenumber) {
+      this.fetchproductperpage(pagenumber);
+    },
   },
 };
 </script>
-<style scoped>
+<style>
+.pagination a {
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  background-color: white;
+  color:blue !important;
+}
+
+.pagination a.active {
+  background-color: green;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: yellow;
+  color: black;
+}
+
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.pagination li {
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  color: white;
+  background-color: white;
+  font-size: 1em;
+}
+.pagination li.pagination-active {
+  background-color: green;
+}
+
+.pagination li:hover:not(.active) {
+  background-color: yellow;
+}
 </style>
