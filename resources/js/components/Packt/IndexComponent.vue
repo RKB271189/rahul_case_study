@@ -17,7 +17,7 @@
                 <!-- Simple loader -->
                 <!-- <loadingtable-component v-if="loading"></loadingtable-component> -->
                 <!-- Product Summary Here -->
-                <div class="row">
+                <div class="row" v-if="!loading">
                   <paginate
                     :pageCount="product.last_page"
                     :click-handler="paginateCallback"
@@ -28,7 +28,7 @@
                     :value="product.current_page"
                   ></paginate>
                 </div>
-                <div class="row">
+                <div class="row" v-if="!loading">
                   <div
                     class="col-md-3"
                     v-for="(details,index) in product.products"

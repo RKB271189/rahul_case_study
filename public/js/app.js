@@ -22453,179 +22453,226 @@ var render = function () {
                   [
                     _vm.loading ? _c("loadingoverlay-component") : _vm._e(),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "row" },
-                      [
-                        _c("paginate", {
-                          staticClass: "pagination",
-                          attrs: {
-                            pageCount: _vm.product.last_page,
-                            "click-handler": _vm.paginateCallback,
-                            prevText: "Prev",
-                            nextText: "Next",
-                            containerClass: "pagination",
-                            value: _vm.product.current_page,
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "row" },
-                      _vm._l(_vm.product.products, function (details, index) {
-                        return _c(
+                    !_vm.loading
+                      ? _c(
                           "div",
-                          { key: index, staticClass: "col-md-3" },
+                          { staticClass: "row" },
                           [
-                            _c(
-                              "div",
-                              { staticClass: "card card-primary card-outline" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "card-body box-profile" },
-                                  [
-                                    _vm._m(0, true),
-                                    _vm._v(" "),
-                                    _c(
-                                      "h3",
-                                      {
-                                        staticClass:
-                                          "profile-username text-center",
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                        " +
-                                            _vm._s(details.title) +
-                                            "\n                      "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      { staticClass: "text-muted text-center" },
-                                      [
-                                        _vm._v(
-                                          "\n                        " +
-                                            _vm._s(details.concept) +
-                                            "\n                      "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "ul",
-                                      {
-                                        staticClass:
-                                          "list-group list-group-unbordered mb-3",
-                                      },
-                                      [
-                                        _c(
-                                          "li",
-                                          { staticClass: "list-group-item" },
-                                          [
-                                            _c("b", [_vm._v("Author ")]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "a",
-                                              { staticClass: "float-right" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(details.authors[0])
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "li",
-                                          { staticClass: "list-group-item" },
-                                          [
-                                            _c("b", [
-                                              _vm._v("Publication Date"),
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "a",
-                                              { staticClass: "float-right" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    details.publication_date
-                                                  )
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "li",
-                                          { staticClass: "list-group-item" },
-                                          [
-                                            _c("b", [_vm._v("Tool ")]),
-                                            _vm._v(" "),
-                                            details.tool
-                                              ? _c(
-                                                  "a",
-                                                  {
-                                                    staticClass: "float-right",
-                                                  },
-                                                  [_vm._v(_vm._s(details.tool))]
-                                                )
-                                              : _c(
-                                                  "a",
-                                                  {
-                                                    staticClass: "float-right",
-                                                  },
-                                                  [_vm._v("-")]
-                                                ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "li",
-                                          { staticClass: "list-group-item" },
-                                          [
-                                            _c("b", [_vm._v("Language ")]),
-                                            _vm._v(" "),
-                                            details.language
-                                              ? _c(
-                                                  "a",
-                                                  {
-                                                    staticClass: "float-right",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(details.language)
-                                                    ),
-                                                  ]
-                                                )
-                                              : _c(
-                                                  "a",
-                                                  {
-                                                    staticClass: "float-right",
-                                                  },
-                                                  [_vm._v("-")]
-                                                ),
-                                          ]
-                                        ),
-                                      ]
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]
+                            _c("paginate", {
+                              staticClass: "pagination",
+                              attrs: {
+                                pageCount: _vm.product.last_page,
+                                "click-handler": _vm.paginateCallback,
+                                prevText: "Prev",
+                                nextText: "Next",
+                                containerClass: "pagination",
+                                value: _vm.product.current_page,
+                              },
+                            }),
+                          ],
+                          1
                         )
-                      }),
-                      0
-                    ),
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.loading
+                      ? _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(
+                            _vm.product.products,
+                            function (details, index) {
+                              return _c(
+                                "div",
+                                { key: index, staticClass: "col-md-3" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "card card-primary card-outline",
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "card-body box-profile",
+                                        },
+                                        [
+                                          _vm._m(0, true),
+                                          _vm._v(" "),
+                                          _c(
+                                            "h3",
+                                            {
+                                              staticClass:
+                                                "profile-username text-center",
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                        " +
+                                                  _vm._s(details.title) +
+                                                  "\n                      "
+                                              ),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "p",
+                                            {
+                                              staticClass:
+                                                "text-muted text-center",
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                        " +
+                                                  _vm._s(details.concept) +
+                                                  "\n                      "
+                                              ),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "ul",
+                                            {
+                                              staticClass:
+                                                "list-group list-group-unbordered mb-3",
+                                            },
+                                            [
+                                              _c(
+                                                "li",
+                                                {
+                                                  staticClass:
+                                                    "list-group-item",
+                                                },
+                                                [
+                                                  _c("b", [_vm._v("Author ")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "a",
+                                                    {
+                                                      staticClass:
+                                                        "float-right",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          details.authors[0]
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "li",
+                                                {
+                                                  staticClass:
+                                                    "list-group-item",
+                                                },
+                                                [
+                                                  _c("b", [
+                                                    _vm._v("Publication Date"),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "a",
+                                                    {
+                                                      staticClass:
+                                                        "float-right",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          details.publication_date
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "li",
+                                                {
+                                                  staticClass:
+                                                    "list-group-item",
+                                                },
+                                                [
+                                                  _c("b", [_vm._v("Tool ")]),
+                                                  _vm._v(" "),
+                                                  details.tool
+                                                    ? _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "float-right",
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(details.tool)
+                                                          ),
+                                                        ]
+                                                      )
+                                                    : _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "float-right",
+                                                        },
+                                                        [_vm._v("-")]
+                                                      ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "li",
+                                                {
+                                                  staticClass:
+                                                    "list-group-item",
+                                                },
+                                                [
+                                                  _c("b", [
+                                                    _vm._v("Language "),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  details.language
+                                                    ? _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "float-right",
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              details.language
+                                                            )
+                                                          ),
+                                                        ]
+                                                      )
+                                                    : _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "float-right",
+                                                        },
+                                                        [_vm._v("-")]
+                                                      ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        )
+                      : _vm._e(),
                   ],
                   1
                 ),
