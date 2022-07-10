@@ -29,13 +29,13 @@ const actions = {
         return new Promise((resolve, reject) => {            
             axios.get('/packt/get-product')
                 .then((response) => {
-                    commit('setproduct', response.data);
-                    console.log(response.data);
-                    resolve(true);
+                    commit('setproduct', response.data);                                      
                 }).catch(error => {
-                    reject(error.response.data);
+                    console.log(error);
+                    reject(false);
                 }).finally(() => {
                     commit('setloading', false);
+                    resolve(true);
                 });
         });
     },
@@ -62,8 +62,8 @@ const mutations = {
     setloading(state, status) {
         state.loading = status;
     },
-    setproduct(state, value) {
-        state.product = value;
+    setproduct(state, value) {        
+        state.product = value;        
     },
     setsingleproduct(state, value) {
         state.singleproduct = value;
