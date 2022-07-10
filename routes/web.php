@@ -45,6 +45,7 @@ Route::group(['middleware' => ['web']], function () {
         /** User operation ends here */
         /**Packt Routes for getting product details**/
         Route::get('/packt/get-product', 'PacktController@productList');
+        Route::get('/packt/get-product-per-page/{pagenumber}', 'PacktController@productlistperpage');
         /**Pack operation ends here**/
     });
 });

@@ -27,6 +27,17 @@ class PacktController extends Controller
             return response()->json($this->ExceptionResponse($ex), 500);
         }
     }
+    public function productlistperpage($pagenumber)
+    {
+        try {
+            $url = config('packt.get_product');
+            $product = $this->packtRepository->getproductperpage($url, $this->token,$pagenumber);
+            return response()->json($product);
+        } catch (Exception $ex) {
+            $this->WriteGeneralException($ex);
+            return response()->json($this->ExceptionResponse($ex), 500);
+        }
+    }
     public function productDetails($id)
     {
         try {
