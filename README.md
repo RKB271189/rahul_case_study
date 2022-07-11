@@ -17,4 +17,6 @@ Laravel vue pack practical to start application
 
 2) npm run watch or npm run watch-poll
 
+# Env Variable 
+1) PACKT_TOKEN is required
 
